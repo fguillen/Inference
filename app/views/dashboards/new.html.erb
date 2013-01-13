@@ -1,12 +1,14 @@
 <% title "New Dashboard" %>
 
-<%= form_for @dashboard do |f| %>
+<%= form_for @dashboard, :html => { :class => "form" } do |f| %>
   <%= f.error_messages %>
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p><%= f.submit %></p>
+  <div class="control-group">
+    <%= f.label :name, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :name, :class => "span6" %>
+    </div>
+  </div>
+  <p><%= f.submit :class => "btn btn-primary" %></p>
 <% end %>
 
 

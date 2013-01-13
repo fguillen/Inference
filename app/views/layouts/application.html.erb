@@ -28,8 +28,8 @@
           <%= link_to "Inference", root_path, :class => "brand" %></a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><%= link_to "Widgets", widgets_path %></li>
-              <li><%= link_to "Dashboards", dashboards_path %></li>
+              <li class="<%= menu_class(:widgets) %>"><%= link_to "Widgets", widgets_path %></li>
+              <li class="<%= menu_class(:dashboards) %>"><%= link_to "Dashboards", dashboards_path %></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>

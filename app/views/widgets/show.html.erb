@@ -1,9 +1,5 @@
 <% title "Widget" %>
 
-<% if !@widget.script.blank? && @widget.script_parsing_errors %>
-  Errors parsing: <%= @widget.script_parsing_errors %>
-<% end %>
-
 <p>
   <strong>Name:</strong>
   <%= @widget.name %>
@@ -13,7 +9,7 @@
   <%= @widget.script %>
 </p>
 
-<% if !@widget.script.blank? && !@widget.script_parsing_errors %>
+<% if !@widget.script.blank? %>
   <p>
     <strong>Image:</strong>
     <%= image_tag @widget.image_url %>

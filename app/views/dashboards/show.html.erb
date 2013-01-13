@@ -25,26 +25,24 @@
   </fieldset>
 <% end %>
 
-<div class="row-fluid">
-  <ul class="thumbnails">
-    <% @dashboard.dashboard_lattices.each do |dashboard_lattice| %>
-      <%= puts "XXX: dashboard_lattice: #{dashboard_lattice.inspect}" %>
-      <li class="span4">
-        <div class="thumbnail">
-          <% if !dashboard_lattice.widget.script.blank? && !dashboard_lattice.widget.script_parsing_errors %>
-            <%= image_tag dashboard_lattice.widget.image_execute(@dashboard.minutes_ago) %>
-          <% end %>
-          <div class="caption">
-            <h3><%= dashboard_lattice.widget.name %></h3>
-            <p><%= dashboard_lattice.widget.text %></p>
-            <p>
-              <%= link_to "Edit", edit_widget_path(dashboard_lattice.widget), :class => "btn" %>
-              <%= link_to "Remove", dashboard_lattice, :class => "btn btn-danger", :method => :delete %>
-            </p>
-          </div>
+<ul class="thumbnails row">
+  <% @dashboard.dashboard_lattices.each do |dashboard_lattice| %>
+    <%= puts "XXX: dashboard_lattice: #{dashboard_lattice.inspect}" %>
+    <li class="span4">
+      <div class="thumbnail">
+        <% if !dashboard_lattice.widget.script.blank? %>
+          <%= image_tag dashboard_lattice.widget.image_execute(@dashboard.minutes_ago) %>
+        <% end %>
+        <div class="caption">
+          <h3><%= dashboard_lattice.widget.name %></h3>
+          <p><%= dashboard_lattice.widget.text %></p>
+          <p>
+            <%= link_to "Edit", edit_widget_path(dashboard_lattice.widget), :class => "btn" %>
+            <%= link_to "Remove", dashboard_lattice, :class => "btn btn-danger", :method => :delete %>
+          </p>
         </div>
-      </li>
-    <% end %>
-  </ul>
-</div>
+      </div>
+    </li>
+  <% end %>
+</ul>
 

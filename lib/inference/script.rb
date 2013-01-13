@@ -7,6 +7,7 @@ class Inference::Script
   attr_reader :file_name
 
   def initialize(widget, minutes_ago = nil)
+    puts "XXX: script.initialize"
     @script = widget.script.dup
     @minutes_ago = minutes_ago || widget.minutes_ago
     @dir_name = File.dirname(widget.image_path)
@@ -14,20 +15,20 @@ class Inference::Script
 
     FileUtils.mkdir_p dir_name
     FileUtils.mkdir_p "#{dir_name}/data"
-
-    puts "XXX: script: #{script}"
   end
 
   def get_values(array_of_hashes, key)
+    puts "XXX: script.get_values"
     array_of_hashes.map { |e| e[key] }
   end
 
   def get_keys
-    puts "XXX: get_keys.script: #{script}"
+    puts "XXX: script.get_keys"
     script.scan( /\{\{([^\{\}]*)\}\}/ ).flatten.uniq
   end
 
   def load_keys_elements(elements, key)
+    puts "XXX: script.load_keys_elements"
     csv_string =
       CSV.generate do |csv|
         csv << ["time", "value"]
@@ -43,9 +44,8 @@ class Inference::Script
   end
 
   def load_keys_header
+    puts "XXX: script.load_keys_header"
     result = "library(zoo)\n"
-
-    puts "XXX: get_keys: #{get_keys.inspect}"
 
     get_keys.each do |key|
       elements = Inference::RedisWrapper.get(key, minutes_ago.minutes.ago, Time.now)
@@ -66,12 +66,14 @@ class Inference::Script
   end
 
   def remplace_keys!
+    puts "XXX: script.remplace_keys"
     get_keys.each do |key|
       script.gsub!( "{{#{key}}}", key )
     end
   end
 
   def wrap!
+    puts "XXX: script.wrap"
     clean!
     remplace_special_variables!
 
@@ -88,6 +90,7 @@ class Inference::Script
   end
 
   def execute
+    puts "XXX: scriptexecute"
     wrap!
 
     R.eval script
