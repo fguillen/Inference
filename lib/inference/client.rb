@@ -2,10 +2,13 @@ class Inference::Client
   mattr_accessor :redis_host
   @@redis_host = "localhost"
 
-  def self.insert(key, timestamp, value)
-    puts "XXX: sending key: #{Time.now.to_i}"
-    client.zadd(key, timestamp, { :timestamp => timestamp, :value => value }.to_json )
-    puts "XXX: key sent: #{Time.now.to_i}"
+  def self.insert(key, time, value)
+    time_string = time.strftime("%F %R:%S")
+    puts "XXX: sending key.key: #{key}"
+    puts "XXX: sending key.time_string: #{time_string}"
+    puts "XXX: sending key.value: #{value}"
+    client.zadd(key, time.to_i, { :time => time_string, :value => value }.to_json )
+    puts "XXX: key sent"
   end
 
   def self.client

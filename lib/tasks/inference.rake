@@ -12,7 +12,7 @@ namespace :inference  do
 
     value = rand(100)
     100.times do |index|
-      timestamp = index.minutes.ago.to_i
+      timestamp = index.minutes.ago
       value = value + (-2..2).to_a.sample
       Inference::Client.insert(key, timestamp, value)
     end

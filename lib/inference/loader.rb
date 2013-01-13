@@ -10,7 +10,7 @@ module Inference::Loader
     data = JSON.parse data_text
     data[0]["datapoints"].each do |datapoint|
       puts "XXX: inserting datapoint: #{datapoint.inspect}"
-      Inference::Client.insert(key, datapoint[1], datapoint[0]) if datapoint[0]
+      Inference::Client.insert(key, Time.at(datapoint[1]), datapoint[0]) if datapoint[0]
     end
   end
 end

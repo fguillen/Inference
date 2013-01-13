@@ -6,6 +6,6 @@ class ApplicationController < ActionController::Base
   private
 
   def metrics
-    Inference::Client.insert("key.request", Time.now.to_i, rand(100))
+    Inference::Client.insert("key.request", Time.now, rand(100))
   end
 end

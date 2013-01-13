@@ -11,7 +11,7 @@ class WidgetTest < ActiveSupport::TestCase
   end
 
   def test_image_execute
-    widget = FactoryGirl.create(:widget, :script => fixture_read("r_scripts/keys.r"))
+    widget = FactoryGirl.create(:widget, :script => fixture_read("r_scripts/zoo.r"))
     widget.image_execute
   end
 

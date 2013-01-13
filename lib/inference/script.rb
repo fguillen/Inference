@@ -30,20 +30,20 @@ class Inference::Script
   def load_keys_elements(elements, key)
     csv_string =
       CSV.generate do |csv|
-        csv << ["timestamp", "value"]
+        csv << ["time", "value"]
         elements.each do |element|
-          csv << [element["timestamp"], element["value"]]
+          csv << [element["time"], element["value"]]
         end
       end
 
     csv_path = "#{dir_name}/data/#{key}.csv"
     File.open(csv_path, "w") { |f| f.write csv_string }
 
-    "#{key} <- read.csv(\"#{csv_path}\")"
+    "#{key} <- read.zoo(\"#{csv_path}\", sep=\",\", format=\"%Y-%m-%d %H:%M:%S\", header=TRUE, FUN=as.POSIXct)"
   end
 
   def load_keys_header
-    result = ""
+    result = "library(zoo)\n"
 
     puts "XXX: get_keys: #{get_keys.inspect}"
 

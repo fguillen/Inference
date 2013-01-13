@@ -15,3 +15,5 @@
 /tmp
 etc/secret
 public/widgets
+.RData
+.Rhistory
