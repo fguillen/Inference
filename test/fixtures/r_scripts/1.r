@@ -1,0 +1,7 @@
+setwd("/Users/fguillen/Downloads")
+values <- c(10,20,30)
+dates <- c(1,2,3)
+jpeg("widget_x.jpg")
+plot(dates, values, type="o", col="blue")
+title(main="Autos", col.main="red", font.main=4)
+dev.off()

@@ -1,0 +1,47 @@
+<div class="row">
+  <%= form_for @widget, :html => { :class => "form" } do |f| %>
+    <div class="span6">
+      <%= f.error_messages %>
+
+      <% if !@widget.script.blank? && @widget.script_parsing_errors %>
+        Errors parsing: <%= @widget.script_parsing_errors %>
+      <% end %>
+
+
+      <fieldset>
+        <legend>Widget Info</legend>
+        <div class="control-group">
+          <%= f.label :name, :class => "control-label" %>
+          <div class="controls">
+            <%= f.text_field :name, :class => "span6" %>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <%= f.label :script, :class => "control-label" %>
+          <div class="controls">
+            <%= f.text_area :script, :class => "span6", :rows => 5 %>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <%= f.label :minutes_ago, :class => "control-label" %>
+          <div class="controls">
+            <%= f.text_field :minutes_ago %>
+          </div>
+        </div>
+      </fieldset>
+
+      <%= f.submit :class => "btn" %>
+    </div>
+
+    <% if !@widget.script.blank? && !@widget.script_parsing_errors %>
+      <div class="span6">
+        <fieldset>
+          <legend>Graph</legend>
+          <%= image_tag @widget.image_execute %>
+        </fieldset>
+      </div>
+    <% end %>
+  <% end %>
+</div>

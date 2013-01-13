@@ -1,0 +1,1 @@
+Time::DATE_FORMATS.merge!( :localdb => "%Y-%m-%d %H:%M:%S" )

@@ -1,0 +1,22 @@
+<% title "Dashboards" %>
+
+<p><%= link_to "New Dashboard", new_dashboard_path, :class => "btn" %></p>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th class="span8">Name</th>
+      <th>Num dashboards</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for dashboard in @dashboards %>
+      <tr>
+        <td><%= link_to dashboard.name, dashboard %></td>
+        <td><%= dashboard.widgets.count %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+

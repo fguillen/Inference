@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+    <%= javascript_include_tag "/assets/jquery/jquery.js" %>
+    <%= javascript_include_tag "/assets/rails/jquery_ujs.js" %>
+
+    <%= csrf_meta_tag %>
+
+    <%= stylesheet_link_tag "/assets/bootstrap/css/bootstrap.css" %>
+    <%= stylesheet_link_tag "/assets/bootstrap/css/bootstrap-responsive.css" %>
+    <%= javascript_include_tag "/assets/bootstrap/js/bootstrap.js" %>
+
+    <%= yield(:head) %>
+  </head>
+  <body>
+
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <%= link_to "Inference", root_path, :class => "brand" %></a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><%= link_to "Widgets", widgets_path %></li>
+              <li><%= link_to "Dashboards", dashboards_path %></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+      <% end %>
+      <%= content_tag :h1, yield(:title) if show_title? %>
+      <%= yield %>
+    </div> <!-- container -->
+  </body>
+</html>

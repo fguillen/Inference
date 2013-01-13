@@ -1,0 +1,20 @@
+<% title "Widgets" %>
+
+<p><%= link_to "New Widget", new_widget_path, :class => "btn" %></p>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th class="span8">Name</th>
+      <th>Last Update</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for widget in @widgets %>
+      <tr>
+        <td><%= link_to widget.name, edit_widget_path(widget) %></td>
+        <td><%= widget.updated_at.to_s(:localdb) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

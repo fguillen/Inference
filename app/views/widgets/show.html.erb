@@ -1,0 +1,27 @@
+<% title "Widget" %>
+
+<% if !@widget.script.blank? && @widget.script_parsing_errors %>
+  Errors parsing: <%= @widget.script_parsing_errors %>
+<% end %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @widget.name %>
+</p>
+<p>
+  <strong>Script:</strong>
+  <%= @widget.script %>
+</p>
+
+<% if !@widget.script.blank? && !@widget.script_parsing_errors %>
+  <p>
+    <strong>Image:</strong>
+    <%= image_tag @widget.image_url %>
+  </p>
+<% end %>
+
+<p>
+  <%= link_to "Edit", edit_widget_path(@widget) %> |
+  <%= link_to "Destroy", @widget, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", widgets_path %>
+</p>
