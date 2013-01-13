@@ -14,4 +14,5 @@ end
 
 group :development do
   gem "nifty-generators"
+  gem "capper", :require => false
 end

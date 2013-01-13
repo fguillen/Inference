@@ -30,9 +30,24 @@ GEM
       multi_json (~> 1.0)
     arel (3.0.2)
     builder (3.0.4)
+    capistrano (2.12.0)
+      highline
+      net-scp (>= 1.0.0)
+      net-sftp (>= 2.0.0)
+      net-ssh (>= 2.0.14)
+      net-ssh-gateway (>= 1.1.0)
+    capistrano_colors (0.5.5)
+    capper (1.2.0)
+      capistrano (~> 2.12.0)
+      capistrano_colors (~> 0.5.5)
+      dedent
+      erubis
+      rvm-capistrano (~> 1.2.3)
+    dedent (0.0.2)
     erubis (2.7.0)
     factory_girl (4.1.0)
       activesupport (>= 3.0.0)
+    highline (1.6.15)
     hike (1.2.1)
     i18n (0.6.1)
     journey (1.0.4)
@@ -50,6 +65,13 @@ GEM
       metaclass (~> 0.0.1)
     multi_json (1.5.0)
     mustache (0.99.4)
+    net-scp (1.0.4)
+      net-ssh (>= 1.99.1)
+    net-sftp (2.0.5)
+      net-ssh (>= 2.0.9)
+    net-ssh (2.6.3)
+    net-ssh-gateway (1.1.0)
+      net-ssh (>= 1.99.1)
     nifty-generators (0.4.6)
     polyglot (0.3.3)
     rack (1.4.3)
@@ -79,6 +101,8 @@ GEM
       json (~> 1.4)
     redis (3.0.2)
     rinruby (2.0.3)
+    rvm-capistrano (1.2.7)
+      capistrano (>= 2.0.0)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -96,6 +120,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  capper
   factory_girl
   jquery-rails
   json
