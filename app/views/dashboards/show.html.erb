@@ -36,7 +36,7 @@
           <% end %>
           <div class="caption">
             <h3><%= dashboard_lattice.widget.name %></h3>
-            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+            <p><%= dashboard_lattice.widget.text %></p>
             <p>
               <%= link_to "Edit", edit_widget_path(dashboard_lattice.widget), :class => "btn" %>
               <%= link_to "Remove", dashboard_lattice, :class => "btn btn-danger", :method => :delete %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130113112038) do
+ActiveRecord::Schema.define(:version => 20130113184540) do
 
   create_table "dashboard_lattices", :force => true do |t|
     t.integer  "dashboard_id",                :null => false
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(:version => 20130113112038) do
     t.integer  "minutes_ago", :default => 1440
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
+    t.text     "text"
   end
 
 end
