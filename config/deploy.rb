@@ -1,5 +1,5 @@
 set :symlinks, {
-  "production.sqlite3" => "db/production.sqlite3"
+  "development.sqlite3" => "db/development.sqlite3"
 }
 
 set :asset_pipeline, false
@@ -11,7 +11,7 @@ set :scm, :git
 
 server "inference.fernandoguillen.info", :app, :web, :db, :primary => true
 set :branch, "master"
-set :rails_env, "production"
+set :rails_env, "development"
 
 
 task :restart do
