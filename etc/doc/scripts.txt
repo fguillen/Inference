@@ -1,0 +1,24 @@
+[widget ] plot({{key.key1}}, type="o", col="blue", ylim=c(0,100), xlim=c({{x_ini}}, {{x_end}}))
+lines({{key.key2}}, col="red")
+
+
+[requests] plot( {{key.request}}, type="o", col="blue", ylim=c(0,100), xlim=c({{x_ini}}, {{x_end}}))
+
+[abo daily] k <- {{abo.users_count}}
+each_hour <- function(tt) time(tt) - as.numeric(time(tt)) %% 3600
+k.aggregate <- aggregate(k, each_hour(k), FUN=mean)
+plot(k.aggregate, type="o", xlim=c({{x_ini}}, {{x_end}}))
+
+[Basic] plot( {{key.key1}} )
+
+[abo daily derivate] k <- {{abo.users_count}}
+each_day <- function(tt) time(tt) - as.numeric(time(tt)) %% (60 * 60 * 24)
+k.aggregate <- aggregate(k, each_day(k), FUN=mean)
+k.aggregate.diff <- diff(k.aggregate)
+plot(k.aggregate.diff, type="o",  xlim=c({{x_ini}}, {{x_end}}))
+
+[abo weekly derivate] k <- {{abo.users_count}}
+each_week <- function(tt) time(tt) - as.numeric(time(tt)) %% (60 * 60 * 24 * 7)
+k.aggregate <- aggregate(k, each_week(k), FUN=mean)
+k.aggregate.diff <- diff(k.aggregate)
+plot(k.aggregate.diff, type="o") => nil
